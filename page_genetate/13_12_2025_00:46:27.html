@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>London – Travel Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 24px;
+    }
+    .page {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+    }
+    h1 { color: #0077b6; margin-top: 0; }
+    .attractions { margin-bottom: 24px; }
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .photos img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    #map {
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      margin-top: 10px;
+    }
+    .muted { color: #666; }
+    .btns a {
+      display:inline-block;
+      padding:12px 20px;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:700;
+      margin-right:10px;
+    }
+    .btn-like { background:#16a34a; }
+    .btn-dislike { background:#dc2626; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>Top attractions in London</h1>
+
+    
+    <div class="attractions">
+      <ul>
+        <li>Buckingham Palace</li><li>The London Eye</li><li>The British Museum</li>
+      </ul>
+    </div>
+
+    <h2>Photo inspiration</h2>
+    <div class="photos">
+      <img src="https://pixabay.com/get/g70234520d7c3597bc5e6e02a1c93c47a2bc842f6bfd5609cdb0222deae2f5e91ee375b9bdf37c52597e1e6e0b17c53d40e444de3dad5101d83e4fc2c41179e5d_1280.jpg"><img src="https://pixabay.com/get/g78e3107e638122c12a7c2573cb1ac6c2aa24e4712770f2ca3f50041c5c0930d16fd4ddd02f75150d9deafe31df29e158992fbadb8843020280f5e3b93cacb241_1280.jpg"><img src="https://pixabay.com/get/gce0cba7f017f1430c4430666289df01494171f309d8177031258660c30fe36fe793fdb6e7dc5ba48c708ce897f501059939dc46bcc7ff0659be9de22785a4102_1280.jpg">
+    </div>
+
+<h2 style="margin:16px 0;">📍 Attractions Map</h2>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<div id="map_1765728060024" style="width:600px;height:300px;border-radius:12px;overflow:hidden"></div>
+<script>
+(function(){
+  function init(){
+    const map = L.map('map_1765728060024');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+    const coords = [[51.5008349,-0.1430045],[51.5029722,-0.1188456],[51.5193755,-0.1274856]];
+    coords.forEach(c => L.marker(c).addTo(map));
+    coords.length ? map.fitBounds(coords, { padding:[20,20] }) : map.setView([0,0], 2);
+  }
+  if (window.L) return init();
+  const s = document.createElement('script');
+  s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  s.onload = init;
+  document.head.appendChild(s);
+})();
+</script>
+
+
+  
+</body>
+</html>
