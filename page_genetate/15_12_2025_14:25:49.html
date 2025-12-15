@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tel Aviv – Travel Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 24px;
+    }
+    .page {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+    }
+    h1 { color: #0077b6; margin-top: 0; }
+    .attractions { margin-bottom: 24px; }
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .photos img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    #map {
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      margin-top: 10px;
+    }
+    .muted { color: #666; }
+    .btns a {
+      display:inline-block;
+      padding:12px 20px;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:700;
+      margin-right:10px;
+    }
+    .btn-like { background:#16a34a; }
+    .btn-dislike { background:#dc2626; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>Top attractions in Tel Aviv</h1>
+
+    
+    <div class="attractions">
+      <ul>
+        <li>Tel Aviv Port</li><li>Independence Hall Museum</li><li>Ben-Gurion House</li>
+      </ul>
+    </div>
+
+    <h2>Photo inspiration</h2>
+    <div class="photos">
+      <img src="https://pixabay.com/get/gade34f969066bd0d6c4ec58e42d80761b67ddaa1298e25cd5b7c5a39a2e9173d65ce9dbe2c0e09e7e248b468698640e7dcd0c8c2b86a6b99e0471332db894a79_1280.jpg"><img src="https://pixabay.com/get/g3276dd9393ec17d82181306be602a6d4bd9b721ad5a1089b0a862902938c0ef7b3471c1a3e1283060b986849b02b5fa6e934815bbb40f3714000c745dc1d91ff_1280.jpg"><img src="https://pixabay.com/get/g2670b68f907faee580bb0f5d296aa310f92e4cfb831609a1b5a624ccab69e3257bd42c968917152337374d83f69d4164bfdda839542e1a7fa7b319f1f15481fd_1280.jpg">
+    </div>
+
+<h2 style="margin:16px 0;">📍 Attractions Map</h2>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<div id="map_1765801576403" style="width:600px;height:300px;border-radius:12px;overflow:hidden"></div>
+<script>
+(function(){
+  function init(){
+    const map = L.map('map_1765801576403');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+    const coords = [[32.0986505,34.775517],[32.0628337,34.7709175],[32.0853654,34.7717148]];
+    coords.forEach(c => L.marker(c).addTo(map));
+    coords.length ? map.fitBounds(coords, { padding:[20,20] }) : map.setView([0,0], 2);
+  }
+  if (window.L) return init();
+  const s = document.createElement('script');
+  s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  s.onload = init;
+  document.head.appendChild(s);
+})();
+</script>
+
+
+  
+</body>
+</html>
