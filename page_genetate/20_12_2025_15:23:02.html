@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chiang Mai – Travel Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 24px;
+    }
+    .page {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+    }
+    h1 { color: #0077b6; margin-top: 0; }
+    .attractions { margin-bottom: 24px; }
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .photos img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    #map {
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      margin-top: 10px;
+    }
+    .muted { color: #666; }
+    .btns a {
+      display:inline-block;
+      padding:12px 20px;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:700;
+      margin-right:10px;
+    }
+    .btn-like { background:#16a34a; }
+    .btn-dislike { background:#dc2626; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>Top attractions in Chiang Mai</h1>
+
+    
+    <div class="attractions">
+      <ul>
+        <li>Wat Phra That Doi Suthep</li><li>Wat Chedi Luang</li><li>Bo Sang Umbrella Village</li>
+      </ul>
+    </div>
+
+    <h2>Photo inspiration</h2>
+    <div class="photos">
+      <img src="https://pixabay.com/get/g806ca50a87cd5f765f827a408b81931c9a2bd01c9fffd25803de4e32c081368231227103b1ce92e3e688750700637cc98c9ee0a8cc34deb6f2eff2e04d5b84ea_1280.jpg"><img src="https://pixabay.com/get/g6618d9d5098a60b4661759ef25aeab145a46d84d84643218a8a9a134c85f5402ddc91f0d8a861b4a695d85b5d12dc1ee85e27dc580f392b15dec0059e67df069_1280.jpg"><img src="https://pixabay.com/get/g1da5913df982a9081146d95b84ffd2a8ae66d587c5c80890201fd002354b58502110d83bd15f021eeb2884b29619313c942de43b5eae4b344b146c2202d07843_1280.jpg">
+    </div>
+
+<h2 style="margin:16px 0;">📍 Attractions Map</h2>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<div id="map_1766237004713" style="width:600px;height:300px;border-radius:12px;overflow:hidden"></div>
+<script>
+(function(){
+  function init(){
+    const map = L.map('map_1766237004713');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+    const coords = [[18.8035942,98.9202265],[18.7871427,98.986784]];
+    coords.forEach(c => L.marker(c).addTo(map));
+    coords.length ? map.fitBounds(coords, { padding:[20,20] }) : map.setView([0,0], 2);
+  }
+  if (window.L) return init();
+  const s = document.createElement('script');
+  s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  s.onload = init;
+  document.head.appendChild(s);
+})();
+</script>
+
+
+  
+</body>
+</html>
